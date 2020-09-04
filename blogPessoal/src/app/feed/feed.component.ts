@@ -4,6 +4,7 @@ import { Tema } from '../model/Tema';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 import { AlertasService } from '../service/alertas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -27,11 +28,18 @@ export class FeedComponent implements OnInit {
   constructor(
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private alerta: AlertasService
+    private alerta: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit(){
-    window.scroll(0, 0)
+
+    let token = localStorage.getItem('token')
+
+    if(token == null) {
+      this.router.navigate(['/login'])
+      this.alerta.showAlertInfo('Faça o login antes de entrar no feed...')
+    }
 
     this.findAllPostagens()
     this.findAllTemas()
