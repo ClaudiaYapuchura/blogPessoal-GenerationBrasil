@@ -18,7 +18,7 @@ export class PostagemService {
   }
 
   getByIdPostagem(id: number) {
-    return this.http.get(`ttp://localhost:9000/postagens/${id}`, this.token)
+    return this.http.get(`http://localhost:9000/postagens/${id}`, this.token)
   }
 
   postPostagem(postagem: Postagem) {
@@ -27,5 +27,9 @@ export class PostagemService {
 
   putPostagem(postagem: Postagem) {
     return this.http.put('http://localhost:9000/postagens', postagem, this.token)
+  }
+
+  deletePostagem(id: number) {
+    return this.http.delete(`http://localhost:9000/postagens/${id}`, this.token)
   }
 }

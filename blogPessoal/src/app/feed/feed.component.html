@@ -24,18 +24,17 @@
   
           <div class="col-md-6">
             <div class="form-group m-0">
-              <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um
-                  novo</a></label>
-              <select name="tema" id='tema' class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()">
-                <option *ngFor="let item of listaTemas" value={{item.id}}>
-                  {{item.descricao}}
-                </option>
-              </select>
+                <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
+                <select name="tema" id='tema' class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()">
+                    <option *ngFor="let item of listaTemas" value={{item.id}}>
+                        {{item.descricao}}
+                    </option>
+                </select>
             </div>
           </div>
   
           <div class="col-md-6 d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-info w-25" (click)="publicar()">Publicar</button>
+            <button type="button" class="btn btn-outline-info w-25" (click)='publicar()'>Publicar</button>
           </div>
   
         </div>
@@ -76,11 +75,11 @@
                       </div>
                       <div class="col-md-4 d-flex justify-content-end">
   
-                        <button class="mr-3 btn btn-outline-info">
+                        <button class="mr-3 btn btn-outline-info" [routerLink]="['/editar-post', item.id]">
                           Editar
                         </button>
   
-                        <button class="btn btn-outline-danger ml-3">
+                        <button class="btn btn-outline-danger ml-3" [routerLink]="['/delete-post', item.id]">
                           Apagar
                         </button>
   
